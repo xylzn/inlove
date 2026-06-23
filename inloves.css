@@ -1,0 +1,586 @@
+/* ==========================
+   GLOBAL SETTINGS
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#120b11;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#1a1117;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        180deg,
+        #ff7b89,
+        #ffb38a
+    );
+    border-radius:20px;
+}
+
+/* ==========================
+   FLOATING HEARTS
+========================== */
+
+.hearts-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    overflow:hidden;
+}
+
+.heart{
+    position:absolute;
+    color:rgba(255,255,255,0.12);
+    animation:floatHeart linear infinite;
+    user-select:none;
+}
+
+@keyframes floatHeart{
+
+    from{
+        transform:
+        translateY(110vh)
+        rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-120vh)
+        rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero{
+    position:relative;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:40px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ff6f7f 0%,
+        #ff9d7a 35%,
+        #c64f72 70%,
+        #1d1322 100%
+    );
+
+    background-attachment:fixed;
+}
+
+/* Hero content animations */
+.hero-content .subtitle {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+.hero-content h1 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 1s;
+}
+
+.hero-content p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 1.5s;
+}
+
+.hero-content .hero-btn {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 2s, pulse 2s ease-in-out infinite 2.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 120, 140, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(255, 120, 140, 0);
+    }
+}
+
+/* PARALLAX MOUNTAINS */
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:40%;
+
+    background:
+    radial-gradient(
+        circle at 20% 100%,
+        rgba(0,0,0,.55),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at 60% 100%,
+        rgba(0,0,0,.5),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 90% 100%,
+        rgba(0,0,0,.55),
+        transparent 35%
+    );
+
+    z-index:2;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.4)
+    );
+
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+    max-width:800px;
+}
+
+.subtitle{
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:50px;
+
+    backdrop-filter:blur(10px);
+
+    letter-spacing:2px;
+    font-size:.8rem;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(
+        3rem,
+        8vw,
+        6rem
+    );
+
+    line-height:1.05;
+
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+
+    color:rgba(255,255,255,.85);
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+}
+
+.hero-btn{
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:15px 34px;
+
+    text-decoration:none;
+    color:white;
+
+    border-radius:999px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff7d8f,
+        #ffb082
+    );
+
+    transition:.35s;
+}
+
+.hero-btn:hover{
+
+    transform:
+    translateY(-5px);
+
+    box-shadow:
+    0 15px 30px
+    rgba(255,120,140,.35);
+}
+
+.scroll-indicator{
+    position:absolute;
+
+    bottom:30px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:3;
+
+    opacity:.8;
+    font-size:.9rem;
+}
+
+/* ==========================
+   SECTION TITLE
+========================== */
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title span{
+    color:#ffb59a;
+    letter-spacing:3px;
+    font-size:.8rem;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    margin-top:10px;
+}
+
+/* ==========================
+   LETTER SECTION
+========================== */
+
+.letter-section{
+    padding:120px 20px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #1a1219,
+        #241520
+    );
+}
+
+.letter-card{
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:50px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    transition:.4s;
+}
+
+.letter-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 25px 60px
+    rgba(255,135,120,.12);
+}
+
+.letter-card p{
+
+    line-height:2;
+    margin-bottom:20px;
+
+    color:
+    rgba(255,255,255,.9);
+}
+
+.signature{
+    margin-top:35px;
+    font-weight:600;
+}
+
+/* ==========================
+   GALLERY
+========================== */
+
+.gallery-section{
+    padding:120px 20px;
+    background:#181018;
+}
+
+.gallery-grid{
+
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.gallery-item{
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.gallery-item img,
+.gallery-item video{   
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video{
+
+
+    transform:
+    scale(1.08);
+
+    filter:
+    brightness(1.05);
+}
+
+.gallery-item::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:2rem;
+
+    opacity:0;
+
+    transition:.4s;
+
+    background:
+    rgba(0,0,0,.2);
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+/* ==========================
+   ENDING SECTION
+========================== */
+
+.ending-section{
+
+    padding:120px 20px;
+
+    background:
+    linear-gradient(
+        180deg,
+        #181018,
+        #120b11
+    );
+}
+
+.ending-card{
+
+    max-width:700px;
+    margin:auto;
+
+    text-align:center;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    transition:.4s;
+}
+
+.ending-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 20px 50px
+    rgba(255,160,120,.15);
+}
+
+.ending-card h2{
+
+    font-family:
+    'Cormorant Garamond',
+    serif;
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+}
+
+.ending-card p{
+
+    line-height:1.8;
+}
+
+.heart{
+
+    margin-top:25px;
+    font-size:2rem;
+}
+
+.playlist-title{
+    text-align:center;
+    margin-top:25px;
+    margin-bottom:15px;
+
+    color:rgba(255,255,255,.85);
+}
+
+.spotify-card{
+    display:block;
+    max-width:350px;
+    margin:0 auto;
+    transition:.3s;
+}
+
+.spotify-card img{
+    width:100%;
+    display:block;
+    border-radius:20px;
+}
+
+.spotify-card:hover{
+    transform:translateY(-8px) scale(1.02);
+
+    box-shadow:
+    0 20px 40px rgba(255,140,140,.25);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .hero{
+        padding:20px;
+    }
+
+    .hero h1{
+        font-size:3.4rem;
+    }
+
+    .letter-card{
+        padding:30px;
+    }
+
+    .section-title h2{
+        font-size:2.2rem;
+    }
+
+    .ending-card{
+        padding:35px 25px;
+    }
+}
